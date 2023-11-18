@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Find The Keywords</title>
+    <link rel="stylesheet" href="{% static "core/index.css" %}" >
+
+</head>
+<body>
+<div class="wrap">
+  <form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+   <div class="search">
+         
+      <input name="Name" type="text" class="searchTerm" placeholder="Type the text here">
+   </div>
+    <br>
+
+      <button type="submit" name="pred_button" class="searchButton"> Submit
+        <i class="fa fa-search"></i>
+     </button>
+   </form>
+
+   <div id="response-control">
+   {% if response %}
+        <h2>The keywords for this text are: </h2>
+        {% for key in response %}
+            <li>{{ key }}</li>
+        {% endfor %}
+    {% else %}
+    <p>Please enter a valid text</p>
+    {% endif %}
+</div>
+
+</div>
+</body>
+</html>
